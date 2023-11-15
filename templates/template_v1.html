@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>HTML</title>
+<style>
+      .column {
+          width: 60%;
+          height: 200px;
+          padding: 5px;
+          margin: 5px;
+          text-align: left;
+      }
+    .columnsub {
+          width: 14.9%;
+          height: 200px;
+          padding: 5px;
+          margin: 5px;
+          text-align: center;
+      }
+      .container {
+         display: -webkit-box; /* wkhtmltopdf uses this one */
+         display: flex;
+         width: 100%;
+      }       
+</style>
+</head> 
+<body>
+        <br/> <br/>
+        <div class="container">
+           <div class="column">
+             <h2> {{ info['title'] }} </h2>
+             {% for s in info['specifications_first'] %}
+               <li>{{s.replace("•", "").strip()}}</li>
+             {% endfor %}
+           </div>
+           <div class="columnsub">
+             <p>Prijs excl. BTW</p> <br/>
+             <p>€ XXX,--</p>
+           </div>
+           <div class="columnsub">
+            <p>Netto prijs zonder inruil excl. BTW</p>
+            <p>€ XXX,--</p>
+           </div>
+        </div>
+
+    <br/> <br/> <br/> </br>
+
+    <div class="container">
+           <div class="column">
+             <h4>Opties gemonteerd</h4>
+             {% for s in info['specifications_second'] %}
+               <li>{{s}}</li></span>
+             {% endfor %}
+            </div>
+           <div class="columnsub">
+             <p>Prijs excl. BTW</p>
+             {% for s in info['specifications_second'] %}
+               <li>€ XXX,-- </li></span>
+             {% endfor %}
+           </div>
+           <div class="columnsub">
+             Netto prijs zonder inruil excl. BTW
+             {% for s in info['specifications_second'] %}
+               <li>€ XXX,-- </li></span>
+             {% endfor %}
+           </div>
+        </div>
+
+
+      <div class="container">
+         <div class="column">
+           <h4>Transport-/leges en afleveringskosten</h4>
+          </div>
+         <div class="columnsub">
+         </div>
+         <div class="columnsub">
+            <p>€ 125,-- </p>
+         </div>
+      </div>
+
+      <div class="container">
+         <div class="column">
+           <h4>Totaalprijs rijklaar + 1 jaar garantie</h4>
+           <i>* alle prijzen excl. BTW en afleveringskosten </i>
+          </div>
+         <div class="columnsub">
+         </div>
+         <div class="columnsub">
+            <p> {{info['amount_incvat']}} </p>
+         </div>
+      </div>
+</body>
+</html>
