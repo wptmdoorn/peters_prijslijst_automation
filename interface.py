@@ -1,27 +1,17 @@
 #!/usr/bin/env python3
-from io import BytesIO
-from pathlib import Path
 from render_jinja import generate_and_return_url
-import os
-
 from nicegui import ui
 
 
 @ui.page('/')
 def home():
-
+    """This function downloads a document from a given URL."""
     def download_document(link: str):
         # check if valid URL
-
-        print('called!')
-        print(link)
-
         if "petersaanhangwagens.nl" not in link:
             ui.notify('Geen valide link - probeer opnieuw!')
         else:
-            l = generate_and_return_url(link)
-            print(l)
-            return l
+            return generate_and_return_url(link)
 
     with ui.card().classes('items-center fixed-center').style('min-width: 500px'):
         ui.image('logo.png').style('width: 60%;')
