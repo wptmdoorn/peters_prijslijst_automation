@@ -1,0 +1,88 @@
+body {
+   padding-top: 200px;
+}
+
+.column {
+   width: 70%;
+   padding: 5px;
+   margin: 5px;
+   text-align: left;
+}
+
+.column_first {
+   width: 10%;
+   height: 200px;
+   padding: 5px;
+   margin: 5px;
+   text-align: center;
+}
+
+.column_second {
+   width: 14%;
+   height: 200px;
+   padding: 5px;
+   margin: 5px;
+   text-align: center;
+}
+
+.container_spec {
+   display: -webkit-box;
+   /* wkhtmltopdf uses this one */
+   display: flex;
+   width: 100%;
+   font-size: 22px;
+   height: 490px;
+   overflow: hidden;
+}
+
+.container_opties {
+   display: -webkit-box;
+   /* wkhtmltopdf uses this one */
+   display: flex;
+   width: 100%;
+   font-size: 22px;
+   height: 304px;
+   overflow: hidden;
+}
+
+.container_leges {
+   display: -webkit-box;
+   /* wkhtmltopdf uses this one */
+   display: flex;
+   width: 100%;
+   margin-bottom: 0px;
+   font-size: 22px;
+   height: 70px;
+}
+
+.container_totaal {
+   display: -webkit-box;
+   /* wkhtmltopdf uses this one */
+   display: flex;
+   width: 100%;
+   font-size: 22px;
+   max-height: 250px;
+   height: 100px;
+}
+
+.image_block {
+   height: 150px;
+   position: relative;
+}
+
+.image_block img {
+   margin: auto;
+   /* Required */
+   position: absolute;
+   /* Required */
+   bottom: 0;
+   /* Aligns at the bottom */
+   left: 0;
+   right: 0;
+   /* Aligns horizontal center */
+   text-align: center;
+   max-height: 100%;
+   /* images bigger than 175 px  */
+   max-width: 100%;
+   /* will be shrinked to size */
+}

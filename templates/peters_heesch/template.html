@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>{{info['product_titel']}}</title>
+<style>{{css_text}}</style>
+</head> 
+<body>
+  <div class="container_spec">
+     <div class="column">
+       <h2> {{ info['product_titel'] }} </h2>
+       {% for s in info['specificaties'] %}
+         <li>{{s.replace("•", "").strip()}}</li>
+       {% endfor %}
+     </div>
+     <div class="column_first">
+     </div>
+     <div class="column_second">
+      <p>{{ info['weergave_btw'] }} </p>
+      <p>{{ info['str_prijs_product'] }}</p>
+     </div>
+  </div>
+
+<div class="container_opties">
+     <div class="column">
+       {% if info['opties']|length > 0 %}
+       <h4>Opties gemonteerd</h4>
+       {% for s in info['opties'] %}
+         <li>{{s}}</li></span>
+       {% endfor %}
+       {% endif %}
+      </div>
+     <div class="column_first">
+     </div>
+     <div class="column_second">
+     </div>
+  </div>
+
+
+<div class="container_leges">
+   <div class="column">
+     <h4>Transport-/leges en afleveringskosten</h4>
+    </div>
+   <div class="column_first">
+   </div>
+   <div class="column_second">
+      <p>{{ info['leges_kosten_str'] }} </p>
+   </div>
+</div>
+
+<div class="container_totaal">
+   <div class="column">
+     <h2>Totaalprijs rijklaar + 1 jaar garantie</h2>
+     {% if info['opties_weergave_btw'] == 'Exclusief' %}
+     <i>* Alle prijzen zijn exclusief BTW </i>
+     {% endif %}
+    </div>
+   <div class="column_first">
+   </div>
+   <div class="column_second">
+      <p>{{ info['str_prijs_totaal'] }}</p>
+   </div>
+</div>
+<div class="image_block">
+  <center><a href="{{ info['opties_link'] }}">
+    <img src="data:image/png;base64,{{ info['qrcode_base64'] }}" border="0">
+  </a></center>
+</div>
+</body>
+</html>
