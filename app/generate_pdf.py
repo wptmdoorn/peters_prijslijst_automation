@@ -12,7 +12,7 @@ from render_utils import html2pdf, format_price
 
 def generate_pdf(info: dict) -> str:
     # setup locale
-    locale.setlocale(locale.LC_ALL, '')
+    locale.setlocale(locale.LC_ALL, "nl_NL")
 
     # generate filename
     _f = datetime.now().strftime('%Y%m%d_%H%M')

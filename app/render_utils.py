@@ -23,5 +23,5 @@ def html2pdf(html_path, pdf_path):
 
 
 def format_price(price: float) -> str:
-    locale.setlocale(locale.LC_ALL, '')
+    locale.setlocale(locale.LC_ALL, "nl_NL")
     return f"€ {locale.format('%.2f', price, grouping=True)}".replace(",00", ",--")

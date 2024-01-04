@@ -14,7 +14,7 @@ ZINNEN_UIT_SPECIFICATIE = [
 
 
 def get_product_information(url: str) -> (bool, dict):
-    locale.setlocale(locale.LC_ALL, '')
+    locale.setlocale(locale.LC_ALL, "nl_NL")
 
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
