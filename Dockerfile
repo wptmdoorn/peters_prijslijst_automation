@@ -10,6 +10,8 @@ RUN update-locale LANG=nl_NL.UTF-8
 
 WORKDIR /code
 
+RUN apt-get install wkhtmltopdf
+
 RUN mkdir -p /code/output/
 
 COPY ./requirements.txt /code/requirements.txt
