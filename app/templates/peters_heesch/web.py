@@ -73,7 +73,7 @@ def home(client):
     ui.page_title('Peters Aanhangers - Maak je prijslijst!')
 
     with ui.card().classes('items-center fixed-center').style('min-width: 500px'):
-        ui.image(f'templates/{ID}/logo.png').style('width: 60%;')
+        ui.image(f'app/templates/{ID}/logo.png').style('width: 60%;')
         ui.label('Maak je prijslijst!')
 
         with ui.tabs() as tabs:

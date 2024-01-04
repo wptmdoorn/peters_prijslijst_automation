@@ -1,0 +1,8 @@
+fastapi==0.108.0
+Jinja2==3.1.2
+nicegui==1.4.8
+pandas==1.4.1
+pdfkit==1.0.0
+qrcode==7.4.2
+requests==2.31.0
+validators

@@ -13,7 +13,7 @@ import importlib
 @ui.page('/')
 def home_page(client: Client):
     def naar_bedrijf(id):
-        if os.path.exists(f'templates/{id}'):
+        if os.path.exists(f'app/templates/{id}'):
             ui.open(f'/bedrijf/{id}', new_tab=False)
         else:
             ui.notify(
@@ -45,7 +45,8 @@ def home_page(client: Client):
 
 @ui.page('/bedrijf/{id}')
 def bedrijfs_pagina(id, client: Client):
-    if os.path.exists(f'templates/{id}'):
+    print(os.getcwd())
+    if os.path.exists(f'app/templates/{id}'):
         bedrijfs_module = importlib.import_module(f'templates.{id}.web')
 
         return bedrijfs_module.home(client)

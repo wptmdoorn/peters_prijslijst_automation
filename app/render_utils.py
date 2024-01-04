@@ -17,6 +17,7 @@ def html2pdf(html_path, pdf_path):
         'margin-bottom': '0.25in',
         'margin-left': '0.25in'
     }
+
     with open(html_path, encoding='utf-8') as f:
         pdfkit.from_file(f, pdf_path, options=options)
 

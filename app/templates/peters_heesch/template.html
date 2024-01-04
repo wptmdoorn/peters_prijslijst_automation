@@ -3,6 +3,7 @@
 <head>
 <title>{{info['product_titel']}}</title>
 <style>{{css_text}}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </head> 
 <body>
   <div class="container_spec">
@@ -12,11 +13,21 @@
          <li>{{s.replace("•", "").strip()}}</li>
        {% endfor %}
      </div>
-     <div class="column_first">
-     </div>
-     <div class="column_second">
-      <p>{{ info['weergave_btw'] }} </p>
-      <p>{{ info['str_prijs_product'] }}</p>
+     <div class="column_double">
+      <div class="column_first"></div>
+      <div class="column_second">
+        <p>{{ info['weergave_btw'] }} </p>
+        <p>{{ info['str_prijs_product'] }}</p>
+       </div>
+      <br/> <br/>
+      <table style="width: 95%; margin: auto;">
+        {% for item in info['specificaties_table'] %}
+        <TR>
+          <TD class="c1">{{item}}</TD>
+          <TD class="c2">{{info['specificaties_table'][item]}}</TD>
+        </TR>
+        {% endfor %}
+      </table>
      </div>
   </div>
 
@@ -29,10 +40,11 @@
        {% endfor %}
        {% endif %}
       </div>
-     <div class="column_first">
+    <div class="column_double">
+      <div class="column_first">
      </div>
      <div class="column_second">
-     </div>
+     </div></div>
   </div>
 
 
@@ -40,11 +52,11 @@
    <div class="column">
      <h4>Transport-/leges en afleveringskosten</h4>
     </div>
-   <div class="column_first">
+    <div class="column_double"><div class="column_first">
    </div>
    <div class="column_second">
       <p>{{ info['leges_kosten_str'] }} </p>
-   </div>
+   </div></div>
 </div>
 
 <div class="container_totaal">
@@ -54,11 +66,11 @@
      <i>* Alle prijzen zijn exclusief BTW </i>
      {% endif %}
     </div>
-   <div class="column_first">
+    <div class="column_double"><div class="column_first">
    </div>
    <div class="column_second">
       <p>{{ info['str_prijs_totaal'] }}</p>
-   </div>
+   </div></div>
 </div>
 <div class="image_block">
   <center><a href="{{ info['opties_link'] }}">

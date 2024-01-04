@@ -1,28 +1,39 @@
 body {
    padding-top: 200px;
+   /* arial font */
+   font-family: "Arial", sans-serif;
 }
 
 .column {
-   width: 70%;
+   width: 60%;
    padding: 5px;
    margin: 5px;
    text-align: left;
+   overflow: hidden;
+}
+
+.column_double {
+   width: 38%;
+   height: 800px;
+   padding: 5px;
+   margin: 5px;
+   text-align: center;
 }
 
 .column_first {
-   width: 10%;
-   height: 200px;
+   width: 42%;
+   text-align: center;
    padding: 5px;
    margin: 5px;
-   text-align: center;
+   display: inline-block;
 }
 
 .column_second {
-   width: 14%;
-   height: 200px;
+   width: 42%;
+   text-align: center;
    padding: 5px;
    margin: 5px;
-   text-align: center;
+   display: inline-block;
 }
 
 .container_spec {
@@ -32,7 +43,6 @@ body {
    width: 100%;
    font-size: 22px;
    height: 490px;
-   overflow: hidden;
 }
 
 .container_opties {
@@ -85,4 +95,15 @@ body {
    /* images bigger than 175 px  */
    max-width: 100%;
    /* will be shrinked to size */
+}
+
+table {
+   background-image: linear-gradient(to bottom, red 0%, blue 100%);
+   /* the gradient */
+   background-origin: border-box;
+   /* set background to start from border-box */
+   border-spacing: 5px;
+   /* space between each cell */
+   border: 5px solid transparent;
+   /* optional */
 }

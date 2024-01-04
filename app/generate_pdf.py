@@ -43,12 +43,12 @@ def generate_pdf(info: dict) -> str:
     info["qrcode_base64"] = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
     # Get File Content in String
-    env = Environment(loader=FileSystemLoader('templates'))
+    env = Environment(loader=FileSystemLoader('app/templates'))
     template = env.get_template('peters_heesch/template.html')
 
     # Render HTML Template String
     render_template = template.render(
-        info=info, css_text=Path('templates/peters_heesch/template.css').read_text())
+        info=info, css_text=Path('app/templates/peters_heesch/template.css').read_text())
 
     # save files
     with open(f"output/{clean_title}.html", "w", encoding='utf-8') as fh:
@@ -57,4 +57,4 @@ def generate_pdf(info: dict) -> str:
     html2pdf(f"output/{clean_title}.html",
              f"output/{clean_title}.pdf")
 
-    return os.path.join(os.path.dirname(__file__), 'output', f"{clean_title}.pdf")
+    return os.path.join(os.getcwd(), 'output', f"{clean_title}.pdf")

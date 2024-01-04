@@ -19,7 +19,7 @@ product = {
 
 
 def generate():
-    from generate_pdf import generate_pdf
+    from app.generate_pdf import generate_pdf
     generate_pdf(product)
 
 
