@@ -29,7 +29,8 @@ def get_product_information(url: str) -> (bool, dict):
         info["prijs_incl"] = float(locale.atof(re.findall("([0-9]+[,.]+[0-9]+[,.]+[0-9]+)", soup.find(
             "span", class_="amount incvat").text.strip())[0]))
 
-    except:
+    except Exception as e:
+        print(e)
         return (False, "Kan de product titel, inclusief en/of exclusief prijs op de gegeven site niet vinden.")
 
     info['leges_kosten'] = 125
