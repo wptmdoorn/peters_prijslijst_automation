@@ -10,6 +10,8 @@ RUN update-locale LANG=nl_NL.UTF-8
 
 WORKDIR /code
 
+RUN mkdir -p /code/output/
+
 COPY ./requirements.txt /code/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
