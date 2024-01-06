@@ -5,8 +5,8 @@ import importlib
 from fastapi.responses import RedirectResponse
 
 
-def page() -> None:
-    @ui.page('/bedrijf/{id}')
+def page(router) -> None:
+    @router.page('/bedrijf/{id}')
     def bedrijfs_pagina(id, client: Client):
         print(os.getcwd())
         if os.path.exists(f'app/templates/{id}'):

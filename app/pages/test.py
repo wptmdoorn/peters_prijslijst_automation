@@ -18,14 +18,14 @@ product = {
 }
 
 
-def page() -> None:
+def page(router) -> None:
     def render(html: str, css: str, prod: str, type: str) -> str:
         if prod == "":
             return generate_custom(product, type, html, css)
         else:
             return generate_custom(get_product_information(prod), type, html, css)
 
-    @ui.page('/test/render')
+    @router.page('/test/render')
     def test_render_page():
         with ui.card().classes('items-center fixed-center').style('min-width: 500px; max-width: 600px'):
             html = ui.textarea().classes('w-full')

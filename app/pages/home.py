@@ -2,8 +2,8 @@ from nicegui import ui, app, Client
 import os
 
 
-def page() -> None:
-    @ui.page('/')
+def page(router) -> None:
+    @router.page('/')
     def home_page(client: Client):
         def naar_bedrijf(id):
             if os.path.exists(f'app/templates/{id}'):
