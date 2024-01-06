@@ -26,6 +26,9 @@
           <TD class="c1">{{item}}</TD>
           <TD class="c2">{{info['specificaties_table'][item]}}</TD>
         </TR>
+        {% if loop.index % 3 == 0 %}
+        <tr class="break"><td colspan="6"></td></tr>
+        {% endif %}
         {% endfor %}
       </table>
      </div>

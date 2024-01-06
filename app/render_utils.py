@@ -15,7 +15,9 @@ def html2pdf(html_path, pdf_path):
         'margin-top': '0.25in',
         'margin-right': '0.25in',
         'margin-bottom': '0.25in',
-        'margin-left': '0.25in'
+        'margin-left': '0.25in',
+        # "disable-smart-shrinking": None,
+        # "zoom": 0.5
     }
 
     with open(html_path, encoding='utf-8') as f:
@@ -24,4 +26,5 @@ def html2pdf(html_path, pdf_path):
 
 def format_price(price: float) -> str:
     locale.setlocale(locale.LC_ALL, "nl_NL")
+    print(price)
     return f"€ {locale.format('%.2f', price, grouping=True)}".replace(",00", ",--")

@@ -24,7 +24,7 @@ def get_product_information(url: str) -> (bool, dict):
         info["product_titel"] = soup.find(
             "h1", class_="product_title entry-title").text.strip()
 
-        info["prijs_excl"] = float(locale.atof(re.findall("\d+\.\d+", soup.find(
+        info["prijs_excl"] = float(locale.atof(re.findall("([0-9]+[,.]+[0-9]+[,.]+[0-9]+)", soup.find(
             "span", class_="amount exvat").text.strip())[0]))
         info["prijs_incl"] = float(locale.atof(re.findall("([0-9]+[,.]+[0-9]+[,.]+[0-9]+)", soup.find(
             "span", class_="amount incvat").text.strip())[0]))

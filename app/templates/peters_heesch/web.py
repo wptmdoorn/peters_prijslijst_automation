@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from generate_pdf import generate_pdf
+from generate_pdf import generate
 from nicegui import ui, app
 import os
 import validators
@@ -32,7 +32,7 @@ def home(client):
                     'Probeer opnieuw met een juiste link. Indien dit het niet verhelpt, neem contact op met de ontwikkelaar.', type='negative')
 
     def retrieve_pdf():
-        pdf_link = generate_pdf(app.storage.user)
+        pdf_link = generate(app.storage.user, type='pdf')
         reset_storage()
         return pdf_link
 

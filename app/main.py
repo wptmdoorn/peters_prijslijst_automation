@@ -8,6 +8,7 @@ from fastapi.responses import RedirectResponse
 from nicegui import ui, app, Client
 import os
 import importlib
+import test_page
 
 
 @ui.page('/')
@@ -19,7 +20,7 @@ def home_page(client: Client):
             ui.notify(
                 'Bedrijf bestaat niet, weet u zeker dat u het juiste ID heeft gebruikt?', type='negative')
 
-    app.add_static_files('/static', 'static')
+    app.add_static_files('/app/static', 'static')
     client.layout.style(
         "background-image: url('static/background.png'); background-size: cover;")
 
@@ -54,6 +55,8 @@ def bedrijfs_pagina(id, client: Client):
     else:
         return RedirectResponse('/')
 
+
+test_page.create()
 
 # fulfill
 ui.run(title='Prijslijst Generator - PyDoorn', host='0.0.0.0', port=80,
