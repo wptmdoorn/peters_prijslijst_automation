@@ -59,5 +59,5 @@ def bedrijfs_pagina(id, client: Client):
 test_page.create()
 
 # fulfill
-ui.run(title='Prijslijst Generator - PyDoorn', host='0.0.0.0', port=80,
+ui.run(title='Prijslijst Generator - PyDoorn', host='0.0.0.0', port=8080,
        favicon="🚀", on_air=False, storage_secret='xxxxx', dark=False)
