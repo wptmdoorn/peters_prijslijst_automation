@@ -4,12 +4,12 @@ services:
   web:
     build:
        context: ./
-       dockerfile: Dockerfile
+       dockerfile: prod.dockerfile
     expose:
       - 8080
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.fastapi.rule=Host(`pydoorn.nl`)"
+      - "traefik.http.routers.fastapi.rule=Host(`prijslijst.pydoorn.nl`)"
       - "traefik.http.routers.fastapi.tls=true"
       - "traefik.http.routers.fastapi.tls.certresolver=letsencrypt"
 

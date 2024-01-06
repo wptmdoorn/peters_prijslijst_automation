@@ -68,8 +68,7 @@ def home(client):
 
     reset_storage()
     client.layout.style(
-        "background-image: url('/../../static/background.png'); background-size: cover;")
-    app.add_static_files('/../../static', 'static')
+        "background-image: url('/static/background.png'); background-size: cover;")
     ui.page_title('Peters Aanhangers - Maak je prijslijst!')
 
     with ui.card().classes('items-center fixed-center').style('min-width: 500px'):

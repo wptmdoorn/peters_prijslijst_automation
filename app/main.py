@@ -5,7 +5,9 @@ It serves as the homepage but also as the router to all the individual company p
 """
 
 from pages import home, test, bedrijf
-from nicegui import ui
+from nicegui import ui, app
+
+app.add_static_files('/static', 'static')
 
 home.page()
 bedrijf.page()

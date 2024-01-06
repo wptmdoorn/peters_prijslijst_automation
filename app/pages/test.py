@@ -19,11 +19,11 @@ product = {
 
 
 def page() -> None:
-    def render(html: str, css: str, product: str, type: str) -> str:
-        if product == "":
+    def render(html: str, css: str, prod: str, type: str) -> str:
+        if prod == "":
             return generate_custom(product, type, html, css)
         else:
-            return generate_custom(get_product_information(product), type, html, css)
+            return generate_custom(get_product_information(prod), type, html, css)
 
     @ui.page('/test/render')
     def test_render_page():

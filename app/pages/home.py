@@ -1,4 +1,5 @@
 from nicegui import ui, app, Client
+import os
 
 
 def page() -> None:
@@ -11,9 +12,8 @@ def page() -> None:
                 ui.notify(
                     'Bedrijf bestaat niet, weet u zeker dat u het juiste ID heeft gebruikt?', type='negative')
 
-        app.add_static_files('/app/static', 'static')
         client.layout.style(
-            "background-image: url('static/background.png'); background-size: cover;")
+            "background-image: url('/static/background.png'); background-size: cover;")
 
         with ui.column().classes('items-center fixed-center'):
             with ui.card().classes('items-center').style('min-width: 500px; max-width: 600px'):
