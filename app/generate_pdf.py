@@ -50,6 +50,9 @@ def generate(info: dict, type: str) -> str:
     render_template = template.render(
         info=info, css_text=Path('app/templates/peters_heesch/template.css').read_text())
 
+    print(render_template)
+    print(info)
+
     # save files
     with open(f"output/{clean_title}.html", "w", encoding='utf-8') as fh:
         fh.write(render_template)
@@ -101,6 +104,8 @@ def generate_custom(info: dict, type: str, html: str, css: str) -> str:
     # Render HTML Template String
     render_template = template.render(
         info=info, css_text=css)
+
+    print(render_template)
 
     # save files
     with open(f"output/{clean_title}.html", "w", encoding='utf-8') as fh:

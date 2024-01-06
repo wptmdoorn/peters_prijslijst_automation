@@ -7,3 +7,4 @@ qrcode==7.4.2
 requests==2.31.0
 validators
 bs4
+lxml

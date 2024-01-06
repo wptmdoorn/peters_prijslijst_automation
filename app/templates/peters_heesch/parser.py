@@ -64,6 +64,7 @@ def get_product_information(url: str) -> (bool, dict):
         info['specificaties_table'] = df.set_index(0).to_dict('dict')[1]
         print(info['specificaties_table'])
 
-    except:
+    except Exception as e:
+        print(e)
         info['specificaties_table'] = {}
     return (True, info)
