@@ -43,6 +43,7 @@ body {
    width: 100%;
    font-size: 22px;
    height: 490px;
+   line-height: 28px;
 }
 
 .container_opties {
@@ -53,6 +54,7 @@ body {
    font-size: 22px;
    height: 320px;
    overflow: hidden;
+   line-height: 28px;
 }
 
 .container_leges {
@@ -105,5 +107,17 @@ table {
    /* space between each cell */
    border: 1px solid #808080;
    /* optional */
-   font-size: 20px;
+   font-size: 19px;
+}
+
+ul {
+   padding-left: 0;
+   list-style-position: inside;
+   margin: 0px;
+}
+
+ul ul {
+   /* Add a margin for any <ul> inside another <ul> */
+   margin-left: 2em;
+   list-style-type: disc !important;
 }

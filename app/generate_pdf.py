@@ -67,6 +67,7 @@ def generate(info: dict, type: str) -> str:
 
 
 def generate_custom(info: dict, type: str, html: str, css: str) -> str:
+    print(info)
     # setup locale
     locale.setlocale(locale.LC_ALL, "nl_NL")
 

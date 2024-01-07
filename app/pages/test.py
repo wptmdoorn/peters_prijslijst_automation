@@ -2,7 +2,7 @@ from nicegui import ui
 from generate_pdf import generate_custom
 from templates.peters_heesch.parser import get_product_information
 
-product = {
+product_dict = {
     'product_titel': 'Peters Product',
     'opties_link': 'http://google.com',
     'opties_weergave_btw': 'Inclusief',
@@ -20,10 +20,20 @@ product = {
 
 def page(router) -> None:
     def render(html: str, css: str, prod: str, type: str) -> str:
+        print(prod)
         if prod == "":
-            return generate_custom(product, type, html, css)
+            d = generate_custom(product_dict, type, html, css)
+            print(d)
+            return d
         else:
-            return generate_custom(get_product_information(prod), type, html, css)
+            p = get_product_information(prod)[1]
+            p['opties_weergave_btw'] = 'Inclusief'
+            p['opties_link'] = 'http://google.com'
+
+            d = generate_custom(p, type, html, css)
+
+            print(d)
+            return d
 
     @router.page('/test/render')
     def test_render_page():

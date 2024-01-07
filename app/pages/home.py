@@ -7,7 +7,7 @@ def page(router) -> None:
     def home_page(client: Client):
         def naar_bedrijf(id):
             if os.path.exists(f'app/templates/{id}'):
-                ui.open(f'/bedrijf/{id}', new_tab=False)
+                ui.open(f'/prijslijst/bedrijf/{id}', new_tab=False)
             else:
                 ui.notify(
                     'Bedrijf bestaat niet, weet u zeker dat u het juiste ID heeft gebruikt?', type='negative')

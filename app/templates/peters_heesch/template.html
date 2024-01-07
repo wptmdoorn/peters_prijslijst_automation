@@ -9,9 +9,11 @@
   <div class="container_spec">
      <div class="column">
        <h2> {{ info['product_titel'] }} </h2>
+       <ul>
        {% for s in info['specificaties'] %}
          <li>{{s.replace("•", "").strip()}}</li>
        {% endfor %}
+       </ul>
      </div>
      <div class="column_double">
       <div class="column_first"></div>
@@ -27,7 +29,7 @@
           <TD class="c2">{{info['specificaties_table'][item]}}</TD>
         </TR>
           {% if loop.index % 3 == 0 %}
-          <tr class="break"><td colspan="6"></td></tr>
+          <tr style="height: 8px;"><td colspan="50"></td></tr>
           {% endif %}
         {% endfor %}
       </table>
@@ -38,9 +40,11 @@
      <div class="column">
        {% if info['opties']|length > 0 %}
        <h4>Opties gemonteerd</h4>
+       <ul>
        {% for s in info['opties'] %}
-         <li>{{s}}</li></span>
+         {{s}}
        {% endfor %}
+       </ul>
        {% endif %}
       </div>
     <div class="column_double">
@@ -73,6 +77,12 @@
    </div>
    <div class="column_second">
       <p>{{ info['str_prijs_totaal'] }}</p>
+      {% if info['opties_weergave_btw'] == 'Exclusief' %}
+      excl. btw
+      {% endif %}
+      {% if info['opties_weergave_btw'] == 'Inclusief' %}
+      incl. btw
+      {% endif %}
    </div></div>
 </div>
 <div class="image_block">

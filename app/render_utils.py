@@ -12,9 +12,9 @@ def html2pdf(html_path, pdf_path):
         'no-outline': None,
         'dpi': 300,
         'enable-local-file-access': None,
-        'margin-top': '0.25in',
+        'margin-top': '0in',
         'margin-right': '0.25in',
-        'margin-bottom': '0.25in',
+        'margin-bottom': '0in',
         'margin-left': '0.25in',
         # "disable-smart-shrinking": None,
         # "zoom": 0.5

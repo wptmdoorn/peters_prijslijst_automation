@@ -53,6 +53,14 @@ def get_product_information(url: str) -> (bool, dict):
 
     try:
         info['opties'] = specificaties[1].strip().split("\n")[1:]
+
+        # indien rondje dan hoofdlijst, anders wordt het een sublijst in HTML
+        info['opties'] = [f'<ul><li>{s}</li></ul>' if s[0] ==
+                          '–' else f'<li>{s}</li>' for s in info['opties']]
+
+        info['opties'] = [re.sub(r'[^a-zA-Z0-9></]+', ' ', s)
+                          for s in info['opties'] if s.strip() != ""]
+
     except:
         info['opties'] = []
 
