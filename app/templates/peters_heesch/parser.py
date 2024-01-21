@@ -66,7 +66,7 @@ def get_product_information(url: str) -> (bool, dict):
         info['opties'] = [f'<ul><li>{s}</li></ul>' if s[0] ==
                           '–' else f'<li>{s}</li>' for s in info['opties']]
 
-        info['opties'] = [re.sub(r'[^a-zA-Z0-9></]+', ' ', s)
+        info['opties'] = [re.sub(r'[^a-zA-Z0-9></$()!:;&.,]+', ' ', s)
                           for s in info['opties'] if s.strip() != ""]
 
     except:
