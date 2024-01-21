@@ -24,10 +24,12 @@ def get_product_information(url: str) -> (bool, dict):
         info["product_titel"] = soup.find(
             "h1", class_="product_title entry-title").text.strip()
 
-        info["prijs_excl"] = float(locale.atof(re.findall("([0-9]+[,.]+[0-9]+[,.]+[0-9]+)", soup.find(
-            "span", class_="amount exvat").text.strip())[0]))
-        info["prijs_incl"] = float(locale.atof(re.findall("([0-9]+[,.]+[0-9]+[,.]+[0-9]+)", soup.find(
-            "span", class_="amount incvat").text.strip())[0]))
+        info["prijs_excl"] = float(locale.atof(re.findall("([0-9]+[,.]+[0-9]+[,.]+[0-9]+)",
+                                                          soup.find("div", class_="summary").find(
+                                                              "span", class_="amount exvat").text.strip())[0]))
+        info["prijs_incl"] = float(locale.atof(re.findall("([0-9]+[,.]+[0-9]+[,.]+[0-9]+)",
+                                                          soup.find("div", class_="summary").find(
+                                                              "span", class_="amount incvat").text.strip())[0]))
 
     except Exception as e:
         print(e)
@@ -37,8 +39,11 @@ def get_product_information(url: str) -> (bool, dict):
 
     # get first-specification
     try:
-        specificaties = soup.find(
-            "div", class_="first-specification").find("p").text.split("Opties")
+        # specificaties = soup.find(
+        #    "div", class_="first-specification").find("p").text.split("Opties")
+        specificaties = soup.find_all("div", class_="at-item")
+        specificaties = specificaties[1].find(
+            "div", class_="at-tab").find("p").text.split("Opties")
 
         info['specificaties'] = specificaties[0].split("\n")
         info['specificaties'] = [re.sub(r'\W+', ' ', s)
