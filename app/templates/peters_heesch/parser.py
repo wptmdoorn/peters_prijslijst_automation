@@ -42,16 +42,19 @@ def get_product_information(url: str) -> (bool, dict):
         # specificaties = soup.find(
         #    "div", class_="first-specification").find("p").text.split("Opties")
         specificaties = soup.find_all("div", class_="at-item")
-        specificaties = specificaties[1].find(
-            "div", class_="at-tab").find("p").text.split("Opties")
 
-        info['specificaties'] = specificaties[0].split("\n")
-        info['specificaties'] = [re.sub(r'\W+', ' ', s)
-                                 for s in info['specificaties'] if s.strip() != ""]
+        for s in specificaties:
+            if "Specificaties" in s.find("div", class_="at-title").text:
+                specificaties = s.find(
+                    "div", class_="at-tab").find("p").text.split("Opties")
 
-        # verwijder standaard zinnen
-        info['specificaties'] = [s for s in info['specificaties'] if
-                                 not any([substr in s.upper() for substr in ZINNEN_UIT_SPECIFICATIE])]
+                info['specificaties'] = specificaties[0].split("\n")
+                info['specificaties'] = [re.sub(r'\W+', ' ', s)
+                                         for s in info['specificaties'] if s.strip() != ""]
+
+                # verwijder standaard zinnen
+                info['specificaties'] = [s for s in info['specificaties'] if
+                                         not any([substr in s.upper() for substr in ZINNEN_UIT_SPECIFICATIE])]
 
     except:
         return (False, "Kan de specificaties op de gegeven site niet vinden.")

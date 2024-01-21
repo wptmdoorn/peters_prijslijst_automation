@@ -8,7 +8,7 @@ sys.path.append(os.getcwd())
 
 def parse():
     from app.templates.peters_heesch.parser import get_product_information
-    url = "https://petersaanhangwagens.nl/product/anssems-bakwagen-gt-750-r-251x126/"
+    url = "https://petersaanhangwagens.nl/product/hapert-cobalt-hm-2-ferro-3500-paraboolvering-verlaagd-375x180-2/"
 
     print(get_product_information(url))
 
