@@ -49,7 +49,7 @@ def get_product_information(url: str) -> (bool, dict):
                     "div", class_="at-tab").find("p").text.split("Opties")
 
                 info['specificaties'] = specificaties[0].split("\n")
-                info['specificaties'] = [re.sub(r'\W+', ' ', s)
+                info['specificaties'] = [re.sub(r'[^a-zA-Z0-9></$()!:;&.,]+', ' ', s)
                                          for s in info['specificaties'] if s.strip() != ""]
 
                 # verwijder standaard zinnen
