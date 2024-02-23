@@ -78,7 +78,6 @@ def get_product_information(url: str) -> (bool, dict):
         df = pd.read_html(str(table))[0]
 
         info['specificaties_table'] = df.set_index(0).to_dict('dict')[1]
-        print(info['specificaties_table'])
 
     except Exception as e:
         print(e)

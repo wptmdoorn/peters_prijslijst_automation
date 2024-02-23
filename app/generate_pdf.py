@@ -10,7 +10,7 @@ from datetime import datetime
 from render_utils import html2pdf, format_price
 
 
-def generate(info: dict, type: str) -> str:
+def generate(info: dict, type: str, id: str) -> str:
     # setup locale
     locale.setlocale(locale.LC_ALL, "nl_NL")
 
@@ -44,30 +44,29 @@ def generate(info: dict, type: str) -> str:
 
     # Get File Content in String
     env = Environment(loader=FileSystemLoader('app/templates'))
-    template = env.get_template('peters_heesch/template.html')
+    template = env.get_template(f'{id}/template.html')
 
     # Render HTML Template String
     render_template = template.render(
-        info=info, css_text=Path('app/templates/peters_heesch/template.css').read_text())
-
-    print(render_template)
-    print(info)
+        info=info, css_text=Path(f'app/templates/{id}/template.css').read_text())
 
     # save files
-    with open(f"output/{clean_title}.html", "w", encoding='utf-8') as fh:
+    if not os.path.exists(f'output/{id}'):
+        os.makedirs(f'output/{id}')
+
+    with open(f"output/{id}/{clean_title}.html", "w", encoding='utf-8') as fh:
         fh.write(render_template)
 
     if type == "html":
-        return os.path.join(os.getcwd(), 'output', f"{clean_title}.html")
+        return os.path.join(os.getcwd(), 'output', id, f"{clean_title}.html")
     elif type == "pdf":
-        html2pdf(f"output/{clean_title}.html",
-                 f"output/{clean_title}.pdf")
+        html2pdf(f"output/{id}/{clean_title}.html",
+                 f"output/{id}/{clean_title}.pdf")
 
-        return os.path.join(os.getcwd(), 'output', f"{clean_title}.pdf")
+        return os.path.join(os.getcwd(), 'output', id, f"{clean_title}.pdf")
 
 
 def generate_custom(info: dict, type: str, html: str, css: str) -> str:
-    print(info)
     # setup locale
     locale.setlocale(locale.LC_ALL, "nl_NL")
 
@@ -105,8 +104,6 @@ def generate_custom(info: dict, type: str, html: str, css: str) -> str:
     # Render HTML Template String
     render_template = template.render(
         info=info, css_text=css)
-
-    print(render_template)
 
     # save files
     with open(f"output/{clean_title}.html", "w", encoding='utf-8') as fh:

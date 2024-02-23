@@ -5,7 +5,7 @@ import os
 import validators
 from .parser import get_product_information
 
-ID = "peters_heesch"
+ID = os.path.basename(os.path.dirname(os.path.realpath(__file__)))
 
 
 def home(client):
@@ -32,7 +32,8 @@ def home(client):
                     'Probeer opnieuw met een juiste link. Indien dit het niet verhelpt, neem contact op met de ontwikkelaar.', type='negative')
 
     def retrieve_pdf():
-        pdf_link = generate(app.storage.user, type='pdf')
+        print(f'CURRENT ID IS: {ID}')
+        pdf_link = generate(app.storage.user, type='pdf', id=ID)
         reset_storage()
         return pdf_link
 
@@ -73,7 +74,7 @@ def home(client):
 
     with ui.card().classes('items-center fixed-center').style('min-width: 500px'):
         ui.image(f'app/templates/{ID}/logo.png').style('width: 60%;')
-        ui.label('Maak je prijslijst!')
+        ui.label(f'Maak je prijslijst!')
 
         with ui.tabs() as tabs:
             ui.tab('h', label='Prijslijsten', icon='home')
