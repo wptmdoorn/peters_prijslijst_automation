@@ -12,6 +12,8 @@ services:
       - "traefik.http.routers.fastapi.rule=Host(`pydoorn.nl`)"
       - "traefik.http.routers.fastapi.tls=true"
       - "traefik.http.routers.fastapi.tls.certresolver=letsencrypt"
+    volumes:
+      - output_volume:/code/output/
 
   traefik:
     image: traefik:v2.2
