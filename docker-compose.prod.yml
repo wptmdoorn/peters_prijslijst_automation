@@ -14,8 +14,8 @@ services:
       - "traefik.http.routers.fastapi.tls.certresolver=letsencrypt"
     volumes:
       - ./root/web/peters_prijslijst_automation/output_volume:/code/output/
-      - ./root/web/peters_prijslijst_automation/output_volume2:./output/
-      - ./root/web/peters_prijslijst_automation/output_volume3:app/output/
+      - ./root/web/peters_prijslijst_automation/output_volume2:/output/
+      - ./root/web/peters_prijslijst_automation/output_volume3:/app/output/
 
   traefik:
     image: traefik:v2.2
