@@ -47,7 +47,7 @@ def home(client):
 
     @ui.refreshable
     def show_opties():
-        ui.number(label='Legeskosten', min=0, max=1000).classes('w-full').bind_value(
+        ui.number(label='Legeskosten (BTW vrij)', min=0, max=1000).classes('w-full').bind_value(
             app.storage.user, 'leges_kosten')
 
         ui.select(label='Weergave van BTW', options=['Exclusief', 'Inclusief'], value='Exclusief').bind_value(
@@ -77,7 +77,6 @@ def home(client):
 
         with ui.tabs() as tabs:
             ui.tab('h', label='Prijslijsten', icon='home')
-            ui.tab('a', label='Coming soon..', icon='info')
 
         with ui.tab_panels(tabs, value='h').classes('w-full'):
             with ui.tab_panel('h'):

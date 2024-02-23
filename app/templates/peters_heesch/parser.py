@@ -49,7 +49,7 @@ def get_product_information(url: str) -> (bool, dict):
                     "div", class_="at-tab").find("p").text.split("Opties")
 
                 info['specificaties'] = specificaties[0].split("\n")
-                info['specificaties'] = [re.sub(r'[^a-zA-Z0-9></$()!:;&.,]+', ' ', s)
+                info['specificaties'] = [re.sub(r'[^a-zA-Z0-9_À-ÿ></$()!:;&.,]+', ' ', s)
                                          for s in info['specificaties'] if s.strip() != ""]
 
                 # verwijder standaard zinnen
@@ -66,7 +66,7 @@ def get_product_information(url: str) -> (bool, dict):
         info['opties'] = [f'<ul><li>{s}</li></ul>' if s[0] ==
                           '–' else f'<li>{s}</li>' for s in info['opties']]
 
-        info['opties'] = [re.sub(r'[^a-zA-Z0-9></$()!:;&.,]+', ' ', s)
+        info['opties'] = [re.sub(r'[^a-zA-Z0-9_À-ÿ></$()!:;&.,]+', ' ', s)
                           for s in info['opties'] if s.strip() != ""]
 
     except:
