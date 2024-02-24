@@ -6,6 +6,7 @@ import validators
 from .parser import get_product_information
 
 ID = os.path.basename(os.path.dirname(os.path.realpath(__file__)))
+PRODUCT_VERSIE = 'demo'
 
 
 def home(client):
@@ -14,8 +15,19 @@ def home(client):
         for k in app.storage.user:
             app.storage.user[k] = ''
 
+        try:
+            app.storage.user['stat_aantal_prijslijsten'] = int(len(
+                os.listdir(f'output/{ID}')) / 2)
+        except:
+            app.storage.user['stat_aantal_prijslijsten'] = 0
+
     def retrieve_information(stepper):
-        if not validators.url(app.storage.user['opties_link']):
+        if PRODUCT_VERSIE == 'demo' and app.storage.user['stat_aantal_prijslijsten'] >= 25:
+            ui.notify(
+                '''Je hebt de limiet van 25 prijslijsten bereikt. 
+                Neem contact op voor verdere opties.''', type='negative')
+
+        elif not validators.url(app.storage.user['opties_link']):
             ui.notify(
                 'Geen geldige link - probeer opnieuw met een juiste link.', type='negative')
 
@@ -32,10 +44,30 @@ def home(client):
                     'Probeer opnieuw met een juiste link. Indien dit het niet verhelpt, neem contact op met de ontwikkelaar.', type='negative')
 
     def retrieve_pdf():
-        print(f'CURRENT ID IS: {ID}')
         pdf_link = generate(app.storage.user, type='pdf', id=ID)
         reset_storage()
+        show_balk.refresh()
         return pdf_link
+
+    @ui.refreshable
+    def show_balk():
+        n = app.storage.user['stat_aantal_prijslijsten']
+
+        if PRODUCT_VERSIE == 'betaald':
+            with ui.column().classes('w-full items-center'):
+                with ui.element('div').classes(
+                    'p-2 bg-green-100 justify-center').style(
+                        'justify-content: center; height: 40px; width: 300px; border-radius: 25px'):
+                    ui.label('betaalde versie').classes('text-center')
+
+        elif PRODUCT_VERSIE == 'demo':
+            _bg = 'bg-orange-100' if n < 25 else 'bg-red-100'
+
+            with ui.column().classes('w-full items-center'):
+                with ui.element('div').classes(
+                    f'p-2 {_bg} justify-center').style(
+                        f'justify-content: center; height: 40px; width: {(200+((n/25)*100))}px; border-radius: 25px'):
+                    ui.label(f'demo - {n}/25 producten').classes('text-center')
 
     @ui.refreshable
     def show_laad():
@@ -81,16 +113,18 @@ def home(client):
 
         with ui.tab_panels(tabs, value='h').classes('w-full'):
             with ui.tab_panel('h'):
+                with ui.card().classes('w-full'):
+                    show_balk()
 
-                with ui.stepper().props('vertical').classes('w-full') as stepper:
-                    with ui.step('Laad product').classes('w-full'):
-                        show_laad()
+                    with ui.stepper().props('vertical').classes('w-full') as stepper:
+                        with ui.step('Laad product').classes('w-full'):
+                            show_laad()
 
-                    with ui.step('Selecteer opties').classes('w-full'):
-                        show_opties()
+                        with ui.step('Selecteer opties').classes('w-full'):
+                            show_opties()
 
-                    with ui.step('Download PDF'):
-                        show_download(stepper)
+                        with ui.step('Download PDF'):
+                            show_download(stepper)
 
             with ui.tab_panel('a'):
                 ui.label('Coming soon..')

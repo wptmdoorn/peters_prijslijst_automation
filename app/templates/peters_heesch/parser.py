@@ -13,7 +13,7 @@ ZINNEN_UIT_SPECIFICATIE = [
 # function to parse a product site of peters
 
 
-def get_product_information(url: str) -> (bool, dict):
+def get_product_information(url: str) -> tuple[bool, dict]:
     locale.setlocale(locale.LC_ALL, "nl_NL")
 
     page = requests.get(url)
