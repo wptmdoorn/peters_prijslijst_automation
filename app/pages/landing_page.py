@@ -39,7 +39,7 @@ def page(router) -> None:
             with ui.row().classes('w-1/2'):
                 ui.separator().props("color=green")
 
-            ui.html('''PyDoorn | KVK 93043252 | info@pydoorn.nl | 
+            ui.html('''PyDoorn V.O.F. | KVK 93043252 | info@pydoorn.nl | 
                     <a href="/static/algemene_voorwaarden.pdf">Algemene Voorwaarden</a> | 
                     <a href="/static/privacy_verklaring.pdf">Privacy verklaring</a>''').classes(
                 'text-2s text-grey')
