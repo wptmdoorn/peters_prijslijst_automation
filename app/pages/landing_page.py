@@ -8,12 +8,13 @@ def page(router) -> None:
             "background-image: url('/static/background_nologo.png'); background-size: cover;")
         ui.page_title('PyDoorn')
 
-        with ui.column().classes('w-full items-center'):
-            ui.image('/static/logo 1000x400.png').classes('w-1/4')
-            ui.html('Software producten voor het MKB &#128640;').classes(
-                'text-2xl items-center')
-            with ui.row().classes('w-1/2'):
-                ui.separator().props("color=green")
+        with ui.row().classes('w-full justify-center'):
+            with ui.column().classes('items-center text-center col-xs-10 col-sm-6 col-md-3'):
+                ui.image('/static/logo 1000x400.png')
+                ui.html('Software producten voor het MKB &#128640;').classes(
+                    'text-2xl items-center text-center')
+                with ui.row().classes('w-1/2'):
+                    ui.separator().props("color=green")
 
         with ui.row().classes('w-full justify-center q-pa-md row items-start q-gutter-md'):
             with ui.card().classes('text-center items-center col-xs-12 col-sm-6 col-md-3 col-lg-3 transform transition duration-500 bg-white-500 hover:bg-green-500 hover:scale-105').on('click', lambda: ui.open('/prijslijst')):
@@ -35,11 +36,11 @@ def page(router) -> None:
                          Klik hier of neem contact op via <a href="mailto:info@pydoorn.nl">info@pydoorn.nl</a>
                         voor een vrijblijvend gesprek!''')
 
-        with ui.column().classes('w-full items-center'):
+        with ui.column().classes('w-full items-center text-center'):
             with ui.row().classes('w-1/2'):
                 ui.separator().props("color=green")
 
             ui.html('''PyDoorn V.O.F. | KVK 93043252 | info@pydoorn.nl | 
-                    <a href="/static/algemene_voorwaarden.pdf">Algemene Voorwaarden</a> | 
-                    <a href="/static/privacy_verklaring.pdf">Privacy verklaring</a>''').classes(
+                    <a href="/static/algemene_voorwaarden_2024_02.pdf">Algemene Voorwaarden</a> | 
+                    <a href="/static/privacy_verklaring_2024_02.pdf">Privacy verklaring</a>''').classes(
                 'text-2s text-grey')
