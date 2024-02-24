@@ -5,7 +5,7 @@ def page(router) -> None:
     @router.page('/')
     def home(client):
         client.layout.style(
-            "background-image: url('/static/background.png'); background-size: cover;")
+            "background-image: url('/static/background_nologo.png'); background-size: cover;")
         ui.page_title('PyDoorn')
 
         with ui.column().classes('w-full items-center'):
