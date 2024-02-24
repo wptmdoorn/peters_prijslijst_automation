@@ -5,6 +5,7 @@ It serves as the homepage but also as the router to all the individual company p
 """
 
 from pages import home, test, bedrijf, landing_page
+from constants import icon_base64
 from nicegui import ui, app, APIRouter
 
 app.add_static_files('/static', 'static')
@@ -23,4 +24,4 @@ app.include_router(router_landing)
 
 # fulfill
 ui.run(title='Prijslijst Generator - PyDoorn', host='0.0.0.0', port=8080,
-       favicon="🚀", on_air=False, storage_secret='xxxxx', dark=False)
+       favicon=icon_base64, on_air=False, storage_secret='xxxxx', dark=False)
