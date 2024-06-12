@@ -4,7 +4,7 @@ application that will be used to generate PDF files.
 It serves as the homepage but also as the router to all the individual company pages.
 """
 
-from pages import home, test, bedrijf, landing_page
+from pages import home, test, bedrijf, landing_page, senddemo
 from constants import icon_base64
 from nicegui import ui, app, APIRouter
 
@@ -16,6 +16,7 @@ router = APIRouter(prefix='/prijslijst')
 home.page(router)
 bedrijf.page(router)
 test.page(router)
+senddemo.page(router)
 
 landing_page.page(router_landing)
 
