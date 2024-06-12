@@ -52,7 +52,7 @@ base_html = f"""
 
     Met vriendelijke groet, <br>
     Maikel van Doorn <br>
-    info@pydoorn.nl <br>
+    E: info@pydoorn.nl | T: +31 6 57 78 93 10<br>
 
     <a href="https://pydoorn.nl">
         <img src="cid:image2" alt="Logo" style="height:100px;">
